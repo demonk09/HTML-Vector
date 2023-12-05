@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .con{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            
+        }
+        .con-table{
+            width: 80%;
+            
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="con">
+        <div class="con-table">
+    <table id="tbl">
+    </table>
+</div>
+</div>
+    <script>
+        fetch("https://jsonplaceholder.typicode.com/todos").then((res) =>
+            res.json()).then((data) => {
+                let tr = document.getElementById("tbl")
+                let str = `<tr>
+                <td>USERID</td>
+                <td>TITLE</td>
+                <td>TASK</td>
+                </tr>`
+
+                data.forEach((element) => {
+                    str = str + `<tr><td>${element.userId}</td>
+                <td>${element.title}</td>
+                <td>${element.completed}</td>
+                </tr>`
+                });
+                tr.innerHTML = str
+            })
+    </script>
+</body>
+
+</html>

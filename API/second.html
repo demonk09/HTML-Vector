@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td,
+        th {
+            border: 2px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <table id="tbl">
+
+    </table>
+    <script>
+        fetch("https://jsonplaceholder.typicode.com/comments").then((res) =>
+            res.json()).then((data) => {
+                let tb=document.getElementById("tbl")
+                let str=`<tr><tb>POST ID</tb><tb>ID</tb><tb>NAME</tb><tb>Email</tb><tb>body</tb></tr>`
+                    data.forEach((element) => {
+                        str=str+`<tr>
+                            <td>${element.postId}</td> 
+                            <td>${element.id}</td> 
+                            <td>${element.name}</td> 
+                            <td>${element.email}</td> 
+                            <td>${element.body}</td> 
+                            </tr>`
+                    });
+                    tb.innerHTML=str
+                });
+       
+           
+
+       
+    </script>
+</body>
+</html>
